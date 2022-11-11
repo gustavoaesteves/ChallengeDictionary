@@ -91,8 +91,9 @@
       "files": [
         "*.html"
       ],
-      "extends": ["eslint:recommended", "plugin:import/errors", "plugin:import/warnings"],
-      "plugins": ["import"],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
       "rules": {}
     }
   ]
