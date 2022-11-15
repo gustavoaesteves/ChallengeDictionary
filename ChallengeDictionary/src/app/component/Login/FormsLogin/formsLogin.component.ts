@@ -37,6 +37,7 @@ export class FormsLoginComponent implements OnInit {
     }
     console.log('Estou logado');
 
+    this._route.navigate(['/Dictionary'])
     // this._login.login(login);
     // if(!!window.localStorage.getItem(key)){
     //   this._route.navigate(['/Irep/dashboard'])
