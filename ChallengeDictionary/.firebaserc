@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "challengedictionary-d4d36": {
+      "hosting": {
+        "ChallengeDictionary": [
+          "challengedictionary-d4d36"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "challengedictionary-d4d36"
+  }
+}
