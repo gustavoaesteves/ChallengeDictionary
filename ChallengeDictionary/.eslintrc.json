@@ -38,6 +38,7 @@
         "padded-blocks": 0,
         "guard-for-in": 0,
         "no-restricted-syntax": 0,
+        "semi": ["warn", "always"],
         "no-console": 0,
         "no-return-assign": 0,
         "curly": "off",
