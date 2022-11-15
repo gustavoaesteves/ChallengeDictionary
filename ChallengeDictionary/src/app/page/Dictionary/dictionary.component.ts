@@ -12,7 +12,7 @@ export class DictionaryPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    let reader = new FileReader();
+    const reader = new FileReader();
 
     // reader.readAsText(Blob,'../../utils/Words/english.txt');
 

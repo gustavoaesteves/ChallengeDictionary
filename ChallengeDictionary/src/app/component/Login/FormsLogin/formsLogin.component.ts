@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'app/services/Firebase/Auth/auth.service';
 
 @Component({
   selector: 'component-login-forms',
@@ -9,16 +10,17 @@ import { Router } from '@angular/router';
 })
 export class FormsLoginComponent implements OnInit {
 
-  public loginForm!: FormGroup;
+  public loginForm: FormGroup;
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _route:Router,
+    private _route: Router,
+    private _auth: AuthService,
   ) { }
 
   ngOnInit(): void {
     this.loginForm = this._formBuilder.group({
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       pass: ['',[Validators.required]]
     });
   }
@@ -28,20 +30,13 @@ export class FormsLoginComponent implements OnInit {
       this.loginForm.markAllAsTouched();
       return;
     }
-    const email = this.loginForm?.get('email')?.value;
-    const pass = this.loginForm?.get('pass')?.value;
 
     const login = {
-      usuario: email,
-      senha: pass,
-    }
-    console.log('Estou logado');
+      email: this.loginForm.get('email').value,
+      pass: this.loginForm.get('pass').value,
+    };
 
-    this._route.navigate(['/Dictionary'])
-    // this._login.login(login);
-    // if(!!window.localStorage.getItem(key)){
-    //   this._route.navigate(['/Irep/dashboard'])
-    // }
-
+    // this._auth.register(login);
+    this._auth.login(login);
   }
 }

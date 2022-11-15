@@ -6,7 +6,7 @@ import { LoginPageComponent } from './page/Login/login.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login',},
   { path: 'login', component: LoginPageComponent },
-  { path: 'Dictionary', component: DictionaryPageComponent,
+  { path: 'dictionary', component: DictionaryPageComponent,
     // children: [
     //   { path: 'dashboard', component: AdvertsPageComponent },
     //   { path: 'announce', component: AnnouncePageComponent },

@@ -2,20 +2,23 @@
 [style]="{'position': 'fixed', 'top':'50%','left':'50%','transform': 'translate(-50%, -50%)'}"
  [formGroup]="loginForm">
   <!-- Email -->
-  <div class="input flex flex-col rounded-2xl h-32">
+  <div class="formField flex flex-col rounded-2xl h-32">
     <mat-form-field class="h-auto text-center" appearance="fill">
-      <mat-label class="text-4xl font-bold">User Name</mat-label>
-      <input class="mt-4 h-10 text-4xl text-black" matInput type="email" [formControlName]="'email'">
+      <mat-label class="text-4xl font-bold">Email</mat-label>
+      <input class="mt-4 h-10 text-4xl" autocomplete="off" matInput type="email" [formControlName]="'email'">
       <mat-error class="error text-lg pt-2 text-red-600 h-9"
       *ngIf="loginForm.get('email').hasError('required') && (loginForm.get('email').dirty || loginForm.get('email').touched)">
-      User Name is required</mat-error>
+      Email is required</mat-error>
+      <mat-error class="error text-lg pt-2 text-red-600 h-9"
+      *ngIf="loginForm.get('email').hasError('email')">
+      Email is incorret</mat-error>
     </mat-form-field>
   </div>
   <!-- Password -->
-  <div class="input flex flex-col rounded-2xl h-32">
+  <div class="formField flex flex-col rounded-2xl h-32">
     <mat-form-field class="h-auto text-center" appearance="fill">
       <mat-label class="text-4xl font-bold">Password</mat-label>
-      <input class="mt-4 h-10 text-4xl text-black" matInput type="password" [formControlName]="'pass'" placeholder="*******" data-test="input-password">
+      <input class="mt-4 h-10 text-4xl text-black " matInput type="password" [formControlName]="'pass'" placeholder="*******" data-test="input-password">
       <mat-error class="error text-lg pt-2 text-red-600 h-9"
       *ngIf="loginForm.get('pass').hasError('required') && (loginForm.get('pass').dirty || loginForm.get('pass').touched)">
       Password is required</mat-error>
