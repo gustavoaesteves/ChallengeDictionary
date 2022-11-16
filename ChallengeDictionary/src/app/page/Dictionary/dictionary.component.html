@@ -1,3 +1,46 @@
 <div class="background">
-  esfse
+  <div class="">
+    <mat-button-toggle-group class="mt-16" #group="matButtonToggleGroup" value="details">
+      <!-- Details Word -->
+      <mat-button-toggle class="w-44 font-bold text-2xl grid grid-cols-1" value="details" aria-label="Text align left">
+        <mat-icon class="mr-5 text-4xl mb-2">
+          <span class="material-symbols-outlined">
+            display_settings
+          </span>
+        </mat-icon>
+        <span class="mt-3">Details</span>
+      </mat-button-toggle>
+      <!-- All Words -->
+      <mat-button-toggle class="w-44 font-bold text-2xl grid grid-cols-1" value="all" aria-label="Text align center">
+        <mat-icon class="mr-5 text-4xl mb-2">
+          <span class="material-symbols-outlined">
+            menu_book
+          </span>
+        </mat-icon>
+        <span>List Words</span>
+      </mat-button-toggle>
+      <!-- Favorites -->
+      <mat-button-toggle class="w-44 font-bold text-2xl grid grid-cols-1" value="favorites"
+        aria-label="Text align right">
+        <mat-icon class="mr-5 text-4xl mb-2">
+          <span class="material-symbols-outlined">
+            star
+          </span>
+        </mat-icon>
+        <span>Favorites</span>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <div class="mt-14">
+    <ng-container *ngIf="group.value === 'details'">
+      <component-details-word></component-details-word>
+    </ng-container>
+    <ng-container *ngIf="group.value === 'all'">
+      <component-list-word></component-list-word>
+    </ng-container>
+    <ng-container *ngIf="group.value === 'favorites'">
+      <component-favorites></component-favorites>
+    </ng-container>
+  </div>
 </div>
