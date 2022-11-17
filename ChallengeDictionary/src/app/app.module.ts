@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
@@ -49,6 +50,7 @@ import { LoginPageComponent } from './page/Login/login.component';
     BrowserAnimationsModule,
     MatButtonToggleModule,
     MatIconModule,
+    HttpClientModule,
 
     // Firebase
     AngularFireModule.initializeApp(environment.firebase),
