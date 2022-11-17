@@ -21,12 +21,9 @@ export class DetailsWordComponent implements OnChanges {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.listWords);
-
     console.log(changes);
 
-    if(this.listWords !== changes["listWords"].currentValue){
-      this.listWords = changes['listWords'].currentValue;
+    if(changes.listWords){
       console.log(this.listWords);
       this.getWordAPI();
     }

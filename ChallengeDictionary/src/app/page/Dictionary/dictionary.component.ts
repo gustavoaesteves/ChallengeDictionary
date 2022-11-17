@@ -43,6 +43,7 @@ export class DictionaryPageComponent implements OnInit {
     this._wordsService.getDatas(this.db).then((test) => {
       test.docs.forEach((doc) => {
         this.allWords.push({ id: parseInt(doc.id), word: doc.get('word') });
+        this.allWords = this.allWords.slice();
       });
       // this.print();
     });
@@ -50,11 +51,4 @@ export class DictionaryPageComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  print(): void {
-    this.allWords.push({ id: 2, word: 'word'});
-    console.log('Aqui');
-
-  }
-
 }

@@ -16,7 +16,7 @@
     "strictBindCallApply": false,
     "strictFunctionTypes": false,
     "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
+    "noPropertyAccessFromIndexSignature": false,
     "noImplicitUseStrict": true,
     "declaration": false,
     "downlevelIteration": true,
