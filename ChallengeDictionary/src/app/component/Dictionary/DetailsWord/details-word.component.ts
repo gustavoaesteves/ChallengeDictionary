@@ -13,35 +13,61 @@ export class DetailsWordComponent implements OnChanges {
 
   @Input() listWords: listWord[];
 
-  private indexWordSelect: number = 0;
+  private indexWordSelect: number = 1;
+
+  private ringer = new Audio();
 
   public wordSelect: WordResume[] = [];
   public wordMeanings: meaningsDefinitions[] = [];
 
-  constructor(private _apiDictionary: DictionaryAPIService,) {}
+  constructor(private _apiDictionary: DictionaryAPIService,) { }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes.listWords && changes.listWords.currentValue){
+    if (changes.listWords && changes.listWords.currentValue) {
       this.getWordAPI();
     }
   }
 
   private getWordAPI(): void {
-    // this.listWords[this.indexWordSelect].word
-    if(this.listWords.length < 1) return;
-    this._apiDictionary.getWordAPI('a').subscribe(wordDetails => {
+    if (this.listWords.length < 1) return;
+    this.ringer = new Audio();
+    this.wordMeanings = [];
+
+    this._apiDictionary.getWordAPI(this.listWords[this.indexWordSelect].word).subscribe(wordDetails => {
+
       this.wordSelect = wordDetails;
+
+      console.log(wordDetails);
       wordDetails.map(detail => {
-        // console.log(detail);
         this.wordMeanings.push(detail.meanings);
-        // detail.map(meaning => {
-        //   this.wordMeanings.push(meaning);
-        // });
+
+        if (this.ringer.src === '')
+          detail.phonetics.map(phone => {
+            if (phone.audio) {
+              this.ringer.src = phone.audio;
+            }
+          });
       });
-      // console.log(wordDetails);
-      // console.log(this.wordMeanings);
+
+      this.wordMeanings = this.wordMeanings.slice();
     });
   }
 
+  public next(): void {
+    this.indexWordSelect += 1;
+    if (this.indexWordSelect === this.listWords.length) this.indexWordSelect = 0;
+    this.getWordAPI();
+  }
+
+  public previous(): void {
+    this.indexWordSelect -= 1;
+    if (this.indexWordSelect === -1) this.indexWordSelect = this.listWords.length - 1;
+    this.getWordAPI();
+  }
+
+  public playSound(): void {
+    this.ringer.muted = false;
+    this.ringer.load();
+    this.ringer.play();
+  }
 }

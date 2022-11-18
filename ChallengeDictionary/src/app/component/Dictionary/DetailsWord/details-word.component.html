@@ -7,16 +7,16 @@
       <!-- Word  -->
       <div class="col-span-12 mt-20 grid justify-items-center">
         <div class="flex flex-row items-center">
-          <button class="mr-24 flex flex-col text-base font-bold" matTooltip="Previous Word"
+          <button class="mr-24 flex flex-col text-base font-bold" matTooltip="Previous Word" (click)="previous()"
             [matTooltipPosition]="'left'">
             <mat-icon class="text-6xl mb-4 ml-3"><span class="material-symbols-outlined">arrow_back_ios</span>
             </mat-icon>
           </button>
-          <div class="backWord flex-none text-white text-2xl w-auto rounded-2xl py-12 px-16 grid grid-cols-1 gap-2">
+          <div class="backWord flex-none text-white text-2xl w-auto rounded-2xl py-12 px-16 grid grid-cols-1 gap-2 border-2 border-black">
             <span>{{wordSelect[0]?.word}}</span>
             <!-- <span>{{wordSelect[0]?.word}}</span> -->
           </div>
-          <button class="ml-24 flex flex-col text-base font-bold" matTooltip="Next Word"
+          <button class="ml-24 flex flex-col text-base font-bold" matTooltip="Next Word" (click)="next()"
             [matTooltipPosition]="'right'">
             <mat-icon class="text-6xl mb-4 mr-3"><span class="material-symbols-outlined">arrow_forward_ios</span>
             </mat-icon>
@@ -25,7 +25,7 @@
 
         <!-- Sound -->
         <div class="flex flex-row items-center mt-6 pr-10">
-          <button class="flex flex-col text-base font-bold" matTooltip="" [matTooltipPosition]="'above'">
+          <button class="flex flex-col text-base font-bold" matTooltip="" [matTooltipPosition]="'above'" (click)="playSound()">
             <mat-icon class="text-8xl mb-4"><span class="material-symbols-outlined">play_circle</span>
             </mat-icon>
           </button>

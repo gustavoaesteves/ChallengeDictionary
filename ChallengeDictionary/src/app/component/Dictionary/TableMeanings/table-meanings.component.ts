@@ -1,6 +1,7 @@
+import { OnChanges, SimpleChanges } from '@angular/core';
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { meanings } from 'app/services/DictionaryAPI/Types/wordResume';
 
 @Component({
@@ -15,7 +16,7 @@ import { meanings } from 'app/services/DictionaryAPI/Types/wordResume';
     ]),
   ],
 })
-export class TableMeaningsComponent implements OnInit {
+export class TableMeaningsComponent implements OnChanges {
 
   @Input() meanings: meanings[];
 
@@ -26,7 +27,11 @@ export class TableMeaningsComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.meanings && changes.meanings.currentValue) {
+      console.log(changes.meanings.currentValue);
+      this.meanings = changes.meanings.currentValue;
+    }
   }
 
 }
