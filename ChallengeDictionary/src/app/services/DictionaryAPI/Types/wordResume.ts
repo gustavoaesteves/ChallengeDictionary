@@ -7,7 +7,8 @@ export class listWord {
 export class WordResume {
   license: license;
   meanings: meanings[];
-  phonetics: any;
+  phonetic: string;
+  phonetics: phonetics[];
   sourceUrls: string[];
   word: string;
 }

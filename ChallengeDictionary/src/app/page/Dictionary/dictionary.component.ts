@@ -51,4 +51,5 @@ export class DictionaryPageComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 }

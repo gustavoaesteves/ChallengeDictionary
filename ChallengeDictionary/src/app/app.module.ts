@@ -14,6 +14,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTableModule } from '@angular/material/table';
 
 // App
 import { environment } from './../environments/environment';
@@ -25,6 +27,7 @@ import { ListWordComponent } from './component/Dictionary/ListWord/list-word.com
 import { FormsLoginComponent } from './component/Login/FormsLogin/formsLogin.component';
 import { DictionaryPageComponent } from './page/Dictionary/dictionary.component';
 import { LoginPageComponent } from './page/Login/login.component';
+import { TableMeaningsComponent } from './component/TableMeanings/table-meanings.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +41,7 @@ import { LoginPageComponent } from './page/Login/login.component';
     DetailsWordComponent,
     ListWordComponent,
     FavoritesComponent,
+    TableMeaningsComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +54,8 @@ import { LoginPageComponent } from './page/Login/login.component';
     BrowserAnimationsModule,
     MatButtonToggleModule,
     MatIconModule,
+    MatTooltipModule,
+    MatTableModule,
     HttpClientModule,
 
     // Firebase

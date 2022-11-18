@@ -1,6 +1,10 @@
 .background {
-  width: 50%;
+  width: 40%;
   max-height: 700px;
-  background-color: RGBA(210, 186, 176, 0.7);
+  background-color: RGBA(210, 186, 176, 0.5);
   color: RGBA(78, 52, 46, 1);
+
+  .backWord {
+    background-color: RGBA(78, 52, 46, 1) !important;
+  }
 }
