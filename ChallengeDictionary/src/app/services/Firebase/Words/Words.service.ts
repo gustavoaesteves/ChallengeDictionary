@@ -1,18 +1,27 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Injectable } from '@angular/core';
 
-import { collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
+//Firebase
+import { getFirestore } from 'firebase/firestore/lite';
+import { initializeApp } from 'firebase/app';
 
+// App
+import { collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
+import { environment } from 'environments/environment';
+
+const app = initializeApp(environment.firebase);
 @Injectable({
   providedIn: 'root'
 })
 export class WordsService {
 
+  private db = getFirestore(app);
+
   constructor() { }
 
-  public async setDatas(db, word: string, id: number): Promise<void> {
+  public async setDatas(word: string, id: number): Promise<void> {
     try {
-      const special1 = doc(db, 'allWords', `${id}`);
+      const special1 = doc(this.db, 'allWords', `${id}`);
       await setDoc(special1, { word: word }, { merge: true }).finally(() => console.log('Successful'));
     } catch (err) {
       return err;
@@ -20,8 +29,8 @@ export class WordsService {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async getDatas(db): Promise<any> {
-    return await getDocs(collection(db, "allWords"));
+  async getDatas(): Promise<any> {
+    return await getDocs(collection(this.db, "allWords"));
     // querySnapshot.docs.forEach((doc) => {
     //   console.log(`${doc.id} => ${doc.get('word')}`);
     // });

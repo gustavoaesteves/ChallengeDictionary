@@ -27,7 +27,7 @@ import { ListWordComponent } from './component/Dictionary/ListWord/list-word.com
 import { FormsLoginComponent } from './component/Login/FormsLogin/formsLogin.component';
 import { DictionaryPageComponent } from './page/Dictionary/dictionary.component';
 import { LoginPageComponent } from './page/Login/login.component';
-import { TableMeaningsComponent } from './component/TableMeanings/table-meanings.component';
+import { TableMeaningsComponent } from './component/Dictionary/TableMeanings/table-meanings.component';
 @NgModule({
   declarations: [
     AppComponent,

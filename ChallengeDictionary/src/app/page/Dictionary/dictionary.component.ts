@@ -40,12 +40,11 @@ export class DictionaryPageComponent implements OnInit {
     "aboriginality", "aboriginalization"];
 
   constructor(private _wordsService: WordsService,) {
-    this._wordsService.getDatas(this.db).then((test) => {
+    this._wordsService.getDatas().then((test) => {
       test.docs.forEach((doc) => {
         this.allWords.push({ id: parseInt(doc.id), word: doc.get('word') });
         this.allWords = this.allWords.slice();
       });
-      // this.print();
     });
   }
 
