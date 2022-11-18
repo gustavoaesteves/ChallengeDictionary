@@ -12,8 +12,9 @@ import { listWord, meaningsDefinitions, WordResume } from 'app/services/Dictiona
 export class DetailsWordComponent implements OnChanges {
 
   @Input() listWords: listWord[];
+  @Input() idWord: number;
 
-  private indexWordSelect: number = 1;
+  private indexWordSelect: number = 0;
 
   private ringer = new Audio();
 
@@ -23,9 +24,13 @@ export class DetailsWordComponent implements OnChanges {
   constructor(private _apiDictionary: DictionaryAPIService,) { }
 
   ngOnChanges(changes: SimpleChanges): void {
+    // eslint-disable-next-line no-empty
     if (changes.listWords && changes.listWords.currentValue) {
-      this.getWordAPI();
     }
+    if (changes.idWord && changes.idWord.currentValue) {
+      this.indexWordSelect = changes.idWord.currentValue;
+    }
+    this.getWordAPI();
   }
 
   private getWordAPI(): void {
@@ -37,7 +42,7 @@ export class DetailsWordComponent implements OnChanges {
 
       this.wordSelect = wordDetails;
 
-      console.log(wordDetails);
+      // console.log(wordDetails);
       wordDetails.map(detail => {
         this.wordMeanings.push(detail.meanings);
 

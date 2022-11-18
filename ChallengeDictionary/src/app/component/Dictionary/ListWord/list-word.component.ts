@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 // APP
 import { listWord } from 'app/services/DictionaryAPI/Types/wordResume';
@@ -10,6 +10,8 @@ import { WordsService } from 'app/services/Firebase/Words/Words.service';
   styleUrls: ['./list-word.component.scss']
 })
 export class ListWordComponent implements OnInit {
+
+  @Output() idWord: EventEmitter<number> = new EventEmitter();
 
   public listWords: listWord[] = [];
 
@@ -26,6 +28,10 @@ export class ListWordComponent implements OnInit {
       });
       console.log(this.listWords);
     });
+  }
+
+  public changeDetail(id: number): void {
+    this.idWord.emit(id);
   }
 
 }
