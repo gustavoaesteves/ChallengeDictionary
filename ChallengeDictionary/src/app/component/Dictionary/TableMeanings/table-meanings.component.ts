@@ -27,7 +27,6 @@ export class TableMeaningsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.meanings);
   }
 
 }

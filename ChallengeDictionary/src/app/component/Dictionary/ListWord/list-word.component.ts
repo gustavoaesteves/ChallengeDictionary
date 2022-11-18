@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 // APP
+import { listWord } from 'app/services/DictionaryAPI/Types/wordResume';
 import { WordsService } from 'app/services/Firebase/Words/Words.service';
 
 @Component({
@@ -10,6 +11,8 @@ import { WordsService } from 'app/services/Firebase/Words/Words.service';
 })
 export class ListWordComponent implements OnInit {
 
+  public listWords: listWord[] = [];
+
   constructor(private _wordsService: WordsService,) { }
 
   ngOnInit(): void {
@@ -18,9 +21,11 @@ export class ListWordComponent implements OnInit {
 
   private readWords(): void {
     this._wordsService.getDatas().then(test => {
-        test.docs.forEach((doc) => {
-          console.log(`${doc.id} => ${doc.get('word')}`);
-        });
+      test.docs.forEach((doc) => {
+        this.listWords.push({ id: parseInt(doc.id), word: doc.get('word') });
       });
+      console.log(this.listWords);
+    });
   }
+
 }
