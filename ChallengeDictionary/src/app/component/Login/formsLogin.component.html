@@ -1,6 +1,7 @@
 <form class="grid gap-6"
 [style]="{'position': 'fixed', 'top':'50%','left':'50%','transform': 'translate(-50%, -50%)'}"
  [formGroup]="loginForm">
+ <span class="button rounded-2xl h-auto text-4xl py-5">Login</span>
   <!-- Email -->
   <div class="formField flex flex-col rounded-2xl h-32">
     <mat-form-field class="h-auto text-center" appearance="fill">
@@ -25,7 +26,8 @@
     </mat-form-field>
   </div>
   <div class="flex flex-col grid justify-items-center">
-    <button class="button rounded-2xl text-white h-12 w-80 text-3xl" (click)="connectUser()">Entrar</button>
+    <button class="button rounded-2xl text-white h-12 w-80 text-3xl" (click)="connectUser()">Login</button>
+    <button class="button rounded-2xl text-white h-12 w-80 text-3xl mt-4" [routerLink]="['/register']">Create Register</button>
   </div>
 </form>
 

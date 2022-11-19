@@ -12,7 +12,12 @@
             <mat-icon class="text-6xl mb-4 ml-3"><span class="material-symbols-outlined">arrow_back_ios</span>
             </mat-icon>
           </button>
-          <div class="backWord flex-none text-white text-2xl w-auto rounded-2xl py-12 px-16 grid grid-cols-1 gap-2 border-2 border-black">
+          <div class="backWord relative flex-none text-white text-2xl w-auto rounded-2xl py-12 px-16 grid grid-cols-1 gap-2 border-2 border-black">
+            <button (click)="saveFavorite()">
+              <mat-icon class="absolute right-2 top-2 test" matTooltip="Favorite" [matTooltipPosition]="'right'">
+                <span class="material-symbols-outlined" [ngClass]="{'text-yellow-400':isFavorite}">grade</span>
+              </mat-icon>
+            </button>
             <span>{{wordSelect[0]?.word}}</span>
             <!-- <span>{{wordSelect[0]?.word}}</span> -->
           </div>

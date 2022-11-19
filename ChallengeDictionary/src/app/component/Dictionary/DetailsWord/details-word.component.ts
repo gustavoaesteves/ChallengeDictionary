@@ -18,6 +18,8 @@ export class DetailsWordComponent implements OnChanges {
 
   private ringer = new Audio();
 
+  public isFavorite: boolean = false;
+
   public wordSelect: WordResume[] = [];
   public wordMeanings: meaningsDefinitions[] = [];
 
@@ -74,5 +76,9 @@ export class DetailsWordComponent implements OnChanges {
     this.ringer.muted = false;
     this.ringer.load();
     this.ringer.play();
+  }
+
+  public saveFavorite(): void {
+
   }
 }

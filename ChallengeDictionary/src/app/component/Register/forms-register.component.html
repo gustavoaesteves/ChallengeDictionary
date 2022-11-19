@@ -1,0 +1,36 @@
+<form class="grid gap-6"
+[style]="{'position': 'fixed', 'top':'50%','left':'50%','transform': 'translate(-50%, -50%)'}"
+ [formGroup]="registerForm">
+ <span class="button rounded-2xl h-auto text-4xl py-5">Register</span>
+  <!-- Email -->
+  <div class="formField flex flex-col rounded-2xl h-32">
+    <mat-form-field class="h-auto text-center" appearance="fill">
+      <mat-label class="text-4xl font-bold">Email</mat-label>
+      <input class="mt-4 h-10 text-4xl" autocomplete="off" matInput type="email" [formControlName]="'email'">
+      <mat-error class="error text-lg pt-2 text-red-600 h-9"
+      *ngIf="registerForm.get('email').hasError('required') && (registerForm.get('email').dirty || registerForm.get('email').touched)">
+      Email is required</mat-error>
+      <mat-error class="error text-lg pt-2 text-red-600 h-9"
+      *ngIf="registerForm.get('email').hasError('email')">
+      Email is incorret</mat-error>
+    </mat-form-field>
+  </div>
+  <!-- Password -->
+  <div class="formField flex flex-col rounded-2xl h-32">
+    <mat-form-field class="h-auto text-center" appearance="fill">
+      <mat-label class="text-4xl font-bold">Password</mat-label>
+      <input class="mt-4 h-10 text-4xl text-black " matInput type="password" [formControlName]="'pass'" placeholder="*******" data-test="input-password">
+      <mat-error class="error text-lg pt-2 text-red-600 h-9"
+      *ngIf="registerForm.get('pass').hasError('required') && (registerForm.get('pass').dirty || registerForm.get('pass').touched)">
+      Password is required</mat-error>
+      <mat-error class="error text-lg pt-2 text-red-600 h-9"
+      *ngIf="registerForm.get('pass').hasError('minlength')">
+      Password is required Min 3 characters</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="flex flex-col grid justify-items-center">
+    <button class="button rounded-2xl text-white h-12 w-80 text-3xl" (click)="connectUser()">Save Register</button>
+    <button class="button rounded-2xl text-white h-12 w-80 text-3xl mt-4" [routerLink]="['/login']">Return Login</button>
+  </div>
+</form>
+
