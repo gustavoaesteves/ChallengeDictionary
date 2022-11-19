@@ -10,10 +10,10 @@ import { listWord } from 'app/services/Firebase/Words/Types/wordResume';
 })
 export class HistoricComponent implements OnInit {
 
-  public favoritesWords: listWord[] = [];
+  public historicsWords: listWord[] = [];
 
   private listWords: listWord[] = [];
-  private favorite: number[] = [];
+  private historic: number[] = [];
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {}
@@ -25,11 +25,9 @@ export class HistoricComponent implements OnInit {
   private readWords(): void {
     this.listWords = JSON.parse(localStorage.getItem("words"));
 
-    this.favorite = JSON.parse(localStorage.getItem("favorite"));
+    this.historic = JSON.parse(localStorage.getItem("historic"));
 
-    this.favoritesWords = this.listWords.filter(word => this.favorite.includes(word.id));
-
-    console.log(this.favoritesWords);
+    this.historicsWords = this.listWords.filter(word => this.historic.includes(word.id));
   }
 
 }
