@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 
 // APP
-import { listWord } from 'app/services/DictionaryAPI/Types/wordResume';
+import { listWord } from 'app/services/Firebase/Words/Types/wordResume';
 import { WordsService } from 'app/services/Firebase/Words/Words.service';
 
 @Component({
@@ -14,6 +14,9 @@ export class DictionaryPageComponent implements OnInit {
 
   // All words save in Firebase
   public allWords: listWord[] = [];
+
+  // Check Saved words
+  public savedLocal: boolean = false;
 
   public listWords = ["a", "a-", "a2 level", "a3", "a4", "a5", "aaa", "aaas", "aad", "aadhaar",
     "aam", "a — and a half", "aapa", "aardwolf", "aargh", "aaronic", "aaron's beard", "aaron's rod",
@@ -49,8 +52,9 @@ export class DictionaryPageComponent implements OnInit {
         .finally(() => {
           localStorage.setItem('words', JSON.stringify(this.allWords));
           console.log('Saved words localStorage');
+          this.savedLocal = true;
         });
-    }
+    } else { this.savedLocal = true;}
   }
 
   ngOnInit(): void {

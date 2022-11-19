@@ -10,11 +10,18 @@
   text-align: center;
 }
 
-.button {
-  // background: ;
-  // background-color: RGBA(210, 186, 176, 0.7);
-  // color: RGBA(78, 52, 46, 1);
+.spinner {
+  opacity: 0.8;
+  background-size: cover;
+  color: white;
+  text-align: center;
+  background: fixed;
+  background-color: RGBA(210, 186, 176, 0.7);
+  color: RGBA(78, 52, 46, 1) !important;
+  border-radius: 10px;
+}
 
+.button {
   mat-button-toggle {
     background: fixed;
     background-color: RGBA(210, 186, 176, 0.7);
@@ -23,6 +30,7 @@
   }
 }
 
-::ng-deep .mat-button-toggle-standalone.mat-button-toggle-appearance-standard, .mat-button-toggle-group-appearance-standard {
+::ng-deep .mat-button-toggle-standalone.mat-button-toggle-appearance-standard,
+.mat-button-toggle-group-appearance-standard {
   border: solid 0px #e0e0e0;
 }

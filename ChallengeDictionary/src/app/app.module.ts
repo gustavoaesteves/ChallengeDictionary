@@ -12,6 +12,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
@@ -26,9 +27,9 @@ import { FavoritesComponent } from './component/Dictionary/favorites/favorites.c
 import { ListWordComponent } from './component/Dictionary/ListWord/list-word.component';
 import { TableMeaningsComponent } from './component/Dictionary/TableMeanings/table-meanings.component';
 import { FormsLoginComponent } from './component/Login/formsLogin.component';
+import { FormsRegisterComponent } from './component/Register/forms-register.component';
 import { DictionaryPageComponent } from './page/Dictionary/dictionary.component';
 import { LoginPageComponent } from './page/Login/login.component';
-import { FormsRegisterComponent } from './component/Register/forms-register.component';
 import { RegisterPageComponent } from './page/Register/register.component';
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { RegisterPageComponent } from './page/Register/register.component';
     MatIconModule,
     MatTooltipModule,
     MatTableModule,
+    MatProgressSpinnerModule,
     HttpClientModule,
 
     // Firebase

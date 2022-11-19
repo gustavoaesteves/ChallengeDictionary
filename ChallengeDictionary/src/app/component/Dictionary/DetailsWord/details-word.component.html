@@ -13,9 +13,9 @@
             </mat-icon>
           </button>
           <div class="backWord relative flex-none text-white text-2xl w-auto rounded-2xl py-12 px-16 grid grid-cols-1 gap-2 border-2 border-black">
-            <button (click)="saveFavorite()">
+            <button (click)="saveFavorite(wordSelect[0]?.word)">
               <mat-icon class="absolute right-2 top-2 test" matTooltip="Favorite" [matTooltipPosition]="'right'">
-                <span class="material-symbols-outlined" [ngClass]="{'text-yellow-400':isFavorite}">grade</span>
+                <span class="material-symbols-outlined" [ngClass]="{'text-yellow-400': checkFavorite(wordSelect[0]?.word)}">grade</span>
               </mat-icon>
             </button>
             <span>{{wordSelect[0]?.word}}</span>

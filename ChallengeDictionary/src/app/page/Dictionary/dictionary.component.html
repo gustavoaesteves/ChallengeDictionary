@@ -34,5 +34,13 @@
     </mat-button-toggle-group>
   </div>
 
-  <app-root></app-root>
+  <div *ngIf="!savedLocal" class="grid justify-items-center overflow-y-hidden flex flex-none mt-16">
+    <div class="spinner">
+      <mat-spinner class="m-10"></mat-spinner>
+    </div>
+  </div>
+
+  <div *ngIf="savedLocal">
+    <app-root></app-root>
+  </div>
 </div>

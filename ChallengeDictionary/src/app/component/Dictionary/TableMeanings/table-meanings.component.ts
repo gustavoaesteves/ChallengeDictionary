@@ -2,7 +2,7 @@ import { OnChanges, SimpleChanges } from '@angular/core';
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input } from '@angular/core';
-import { meanings } from 'app/services/DictionaryAPI/Types/wordResume';
+import { meanings } from 'app/services/Firebase/Words/Types/wordResume';
 
 @Component({
   selector: 'component-table-meanings',
