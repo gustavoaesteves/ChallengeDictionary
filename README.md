@@ -28,17 +28,21 @@ Esse é um projeto Desenvolvido com o intuito de ter sua caracteristica como um 
 # Instruções
 
   1. Baixe o repositorio na sua máquina.
+
       ```git clone https://github.com/gustavoaesteves/ChallengeDictionary.git```
 
   2. Abra o repositorio em sua IDE, dentro da basta "ChallengeDictionary".
 
   3. Instale as dependencias necessarias.
+
       ```npm install```
 
   4. Dentro do projeto, acesse a pasta "node_modules/@firebase/auth-compat/dist/auth-compat/index.d.ts" e troque a linha por 53.    
+
       ```import { User, Unsubscribe, ActionCodeInfo, UserCredential, Auth, IdTokenResult, MultiFactorError, MultiFactorResolver, PopupRedirectResolver, Dependencies, AuthCredential, ApplicationVerifier, ConfirmationResult, AuthProvider, MultiFactorUser, NextOrObserver, ErrorFn, CompleteFn, ActionCodeSettings, Persistence, PhoneAuthCredential } from "@firebase/auth";```
-      
+
   5. Rode o projeto.
+  
       ```npm start```
 
 
