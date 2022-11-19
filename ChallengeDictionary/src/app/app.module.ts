@@ -24,6 +24,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DetailsWordComponent } from './component/Dictionary/DetailsWord/details-word.component';
 import { FavoritesComponent } from './component/Dictionary/favorites/favorites.component';
+import { HistoricComponent } from './component/Dictionary/Historic/historic.component';
 import { ListWordComponent } from './component/Dictionary/ListWord/list-word.component';
 import { TableMeaningsComponent } from './component/Dictionary/TableMeanings/table-meanings.component';
 import { FormsLoginComponent } from './component/Login/formsLogin.component';
@@ -31,7 +32,6 @@ import { FormsRegisterComponent } from './component/Register/forms-register.comp
 import { DictionaryPageComponent } from './page/Dictionary/dictionary.component';
 import { LoginPageComponent } from './page/Login/login.component';
 import { RegisterPageComponent } from './page/Register/register.component';
-import { HistoricComponent } from './component/Dictionary/Historic/historic/historic.component';
 @NgModule({
   declarations: [
     AppComponent,

@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 
 // App
 import { DictionaryAPIService } from 'app/services/DictionaryAPI/dictionaryAPI.service';
-import { listWord, meaningsDefinitions, WordResume } from 'app/services/Firebase/Words/Types/wordResume';
+import { listWord, WordResume } from 'app/services/Firebase/Words/Types/wordResume';
 import { UsersService } from 'app/services/Firebase/Users/Users.service';
 
 @Component({
@@ -33,7 +33,8 @@ export class DetailsWordComponent implements OnInit {
 
   // Words get API
   public wordSelect: WordResume[] = [];
-  public wordMeanings: meaningsDefinitions[] = [];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public wordMeanings: any[] = [];
 
   constructor(
     private _apiDictionary: DictionaryAPIService,
@@ -63,12 +64,13 @@ export class DetailsWordComponent implements OnInit {
   private userSaved(): void {
     this._usersService.getUsers().then((test) => {
       test.docs.forEach((doc) => {
-        if(doc.get('favorite').length > 0) doc.get('favorite').map(id => this.favorite.push(id));
-        if(doc.get('historic').length > 0) doc.get('historic').map(id => this.historic.push(id));
+        if (doc.get('favorite').length > 0) doc.get('favorite').map(id => this.favorite.push(id));
+        if (doc.get('historic').length > 0) doc.get('historic').map(id => this.historic.push(id));
       });
 
     }).catch(err => { console.log(err); })
       .finally(() => {
+        this.historic = [... new Set(this.historic)];
         localStorage.setItem('favorite', JSON.stringify(this.favorite));
         localStorage.setItem('historic', JSON.stringify(this.historic));
         console.log('Saved favorite and historic localStorage');
@@ -83,26 +85,46 @@ export class DetailsWordComponent implements OnInit {
     this.historic = JSON.parse(localStorage.getItem("historic"));
   }
 
+  private saveHistoric(word: string): void {
+    const idHistoric = this.listWords[this.listWords.findIndex(obj => obj.word == word)].id;
+    if (this.historic.includes(idHistoric)) return;
+
+    this.historic.push(idHistoric);
+
+    localStorage.setItem('historic', JSON.stringify(this.historic));
+    this._usersService.setUser(this.user, this.favorite, this.historic);
+  }
+
   private getWordAPI(word: string): void {
     this._location.replaceState("/dictionary/details/" + word);
     this.ringer = new Audio();
     this.wordMeanings = [];
 
+    this.saveHistoric(word);
+
+    if (JSON.parse(localStorage.getItem(word)) !== null) {
+      this.wordSelect = JSON.parse(localStorage.getItem(word));
+      this.tableMeanings();
+    } else {
     this._apiDictionary.getWordAPI(word).subscribe(wordDetails => {
-
       this.wordSelect = wordDetails;
+      localStorage.setItem(word, JSON.stringify(wordDetails));
+      this.tableMeanings();
+    });
 
-      wordDetails.map(detail => {
-        this.wordMeanings.push(detail.meanings);
+    }
+  }
 
-        if (this.ringer.src === '')
-          detail.phonetics.map(phone => {
-            if (phone.audio) {
-              this.ringer.src = phone.audio;
-            }
-          });
-      });
+  private tableMeanings(): void {
+    this.wordSelect.map(detail => {
+      this.wordMeanings.push(detail.meanings);
 
+      if (this.ringer.src === '')
+        detail.phonetics.map(phone => {
+          if (phone.audio) {
+            this.ringer.src = phone.audio;
+          }
+        });
       this.wordMeanings = this.wordMeanings.slice();
     });
   }

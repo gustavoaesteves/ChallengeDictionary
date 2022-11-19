@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DetailsWordComponent } from './component/Dictionary/DetailsWord/details-word.component';
 import { FavoritesComponent } from './component/Dictionary/favorites/favorites.component';
+import { HistoricComponent } from './component/Dictionary/Historic/historic.component';
 import { ListWordComponent } from './component/Dictionary/ListWord/list-word.component';
 import { DictionaryPageComponent } from './page/Dictionary/dictionary.component';
 import { LoginPageComponent } from './page/Login/login.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: 'details/:word', component: DetailsWordComponent },
       { path: 'favorites', component: FavoritesComponent },
       { path: 'list', component: ListWordComponent },
+      { path: 'historic', component: HistoricComponent },
     ]
   },
   { path: '**', redirectTo: 'login',},

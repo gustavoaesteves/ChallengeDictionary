@@ -1,0 +1,17 @@
+<div class="grid justify-items-center overflow-y-hidden flex flex-none">
+  <div class="background rounded-3xl overflow-y-auto my-16 p-10">
+    <!-- Title -->
+    <span *ngIf="favoritesWords.length > 0" class="font-bold text-3xl">Favorites Words, select one for showing details </span>
+    <span *ngIf="favoritesWords.length === 0" class="font-bold text-3xl">Does not contain favorite words</span>
+
+    <div class="grid grid-cols-5 gap-4 mt-10">
+      <div *ngFor="let word of favoritesWords">
+        <button [routerLink]="['/dictionary/details/' + word.word]">
+          <div class="colorButton border-2 border-black rounded-full p-2 min-w-24 min-h-9">
+            <span class="text-white">{{word.word}}</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
