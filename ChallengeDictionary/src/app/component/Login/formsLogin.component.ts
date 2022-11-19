@@ -26,6 +26,12 @@ export class FormsLoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       pass: ['', [Validators.required]]
     });
+
+    // Set all Words in Firebase - Saved 100 words limit firebase no cost
+    // const teste = ["a", "a-"];
+    // teste.map((word, index) => {
+    //   this._wordsService.setDatas(this.db, word, index).then(() => console.log('Salva'));
+    // });
   }
 
   connectUser(): void {
@@ -38,21 +44,6 @@ export class FormsLoginComponent implements OnInit {
       email: this.loginForm.get('email').value,
       pass: this.loginForm.get('pass').value,
     };
-
-    // Set all Words in Firebase - Saved 100 words limit firebase no cost
-    // const teste = ["a", "a-"];
-    // teste.map((word, index) => {
-    //   this._wordsService.setDatas(this.db, word, index).then(() => console.log('Salva'));
-    // });
-
-    // this._wordsService.getDatas(this.db).then(test => {
-    //   test.docs.forEach((doc) => {
-    //     console.log(`${doc.id} => ${doc.get('word')}`);
-    //   });
-    // });
-
-    // Register User Standart
-    // this._auth.register(login);
 
     // Login User
     this._auth.login(login);

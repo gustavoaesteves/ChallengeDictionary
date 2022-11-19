@@ -47,9 +47,8 @@ export class DetailsWordComponent implements OnInit {
 
   ngOnInit(): void {
     // Saved localStorage
-    const saved = JSON.parse(localStorage.getItem("favorite"));
-    if (saved === null) this.userSaved();
-    else { this.getFavorite(); this.getHistoric(); }
+    this.getFavorite();
+    this.getHistoric();
 
     // Get words localstorage
     this.listWords = JSON.parse(localStorage.getItem("words"));
@@ -59,22 +58,6 @@ export class DetailsWordComponent implements OnInit {
       if (g) this.getWordAPI(g.word);
       this.indexWordSelect = this.listWords.findIndex(obj => obj.word == g.word);
     });
-  }
-
-  private userSaved(): void {
-    this._usersService.getUsers().then((test) => {
-      test.docs.forEach((doc) => {
-        if (doc.get('favorite').length > 0) doc.get('favorite').map(id => this.favorite.push(id));
-        if (doc.get('historic').length > 0) doc.get('historic').map(id => this.historic.push(id));
-      });
-
-    }).catch(err => { console.log(err); })
-      .finally(() => {
-        this.historic = [... new Set(this.historic)];
-        localStorage.setItem('favorite', JSON.stringify(this.favorite));
-        localStorage.setItem('historic', JSON.stringify(this.historic));
-        console.log('Saved favorite and historic localStorage');
-      });
   }
 
   private getFavorite(): void {

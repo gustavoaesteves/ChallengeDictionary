@@ -27,6 +27,8 @@ export class HistoricComponent implements OnInit {
 
     this.historic = JSON.parse(localStorage.getItem("historic"));
 
+    if(this.historic === null) return;
+
     this.historicsWords = this.listWords.filter(word => this.historic.includes(word.id));
   }
 

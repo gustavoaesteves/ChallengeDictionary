@@ -20,7 +20,6 @@ export class FavoritesComponent implements OnInit {
   constructor(private not: NotificationService) {}
 
   ngOnInit(): void {
-    this.not.showSuccess('Sucesso',' Title');
     this.readWords();
   }
 
@@ -29,8 +28,8 @@ export class FavoritesComponent implements OnInit {
 
     this.favorite = JSON.parse(localStorage.getItem("favorite"));
 
-    this.favoritesWords = this.listWords.filter(word => this.favorite.includes(word.id));
+    if(this.favorite === null) return;
 
-    console.log(this.favoritesWords);
+    this.favoritesWords = this.listWords.filter(word => this.favorite.includes(word.id));
   }
 }
