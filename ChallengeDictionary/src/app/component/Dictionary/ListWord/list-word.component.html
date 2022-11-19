@@ -5,7 +5,7 @@
 
     <div class="grid grid-cols-5 gap-4 mt-10">
       <div *ngFor="let word of listWords">
-        <button (click)="changeDetail(word.id)">
+        <button [routerLink]="['/dictionary/details/' + word.word]">
           <div class="colorButton border-2 border-black rounded-full p-2 min-w-24 min-h-9">
             <span class="text-white">{{word.word}}</span>
           </div>

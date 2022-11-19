@@ -1,17 +1,9 @@
 <div class="background">
   <div class="">
-    <mat-button-toggle-group class="mt-16 button gap-5" [value]="selectToogle" (change)="setToogle($event)">
-      <!-- Details Word -->
-      <mat-button-toggle class="w-44 font-bold text-2xl grid grid-cols-1 border-2 border-black" [value]="'details'">
-        <mat-icon class="mr-5 text-4xl mb-2">
-          <span class="material-symbols-outlined">
-            display_settings
-          </span>
-        </mat-icon>
-        <span class="mt-3">Details</span>
-      </mat-button-toggle>
+    <mat-button-toggle-group class="mt-16 button gap-5">
       <!-- All Words -->
-      <mat-button-toggle class="w-44 font-bold text-2xl grid grid-cols-1 border-2 border-black" [value]="'all'" aria-label="Text align center">
+      <mat-button-toggle [routerLink]="['/dictionary/list']"
+        class="w-44 font-bold text-2xl grid grid-cols-1 border-2 border-black" aria-label="Text align center">
         <mat-icon class="mr-5 text-4xl mb-2">
           <span class="material-symbols-outlined">
             menu_book
@@ -19,9 +11,19 @@
         </mat-icon>
         <span>List Words</span>
       </mat-button-toggle>
+      <!-- Details Word -->
+      <mat-button-toggle [routerLink]="['/dictionary/details/' + 'a']"
+        class="w-44 font-bold text-2xl grid grid-cols-1 border-2 border-black">
+        <mat-icon class="mr-5 text-4xl mb-2">
+          <span class="material-symbols-outlined">
+            display_settings
+          </span>
+        </mat-icon>
+        <span class="mt-3">Details</span>
+      </mat-button-toggle>
       <!-- Favorites -->
-      <mat-button-toggle class="w-44 font-bold text-2xl grid grid-cols-1 border-2 border-black" [value]="'favorites'"
-        aria-label="Text align right">
+      <mat-button-toggle [routerLink]="['/dictionary/favorites']"
+        class="w-44 font-bold text-2xl grid grid-cols-1 border-2 border-black" aria-label="Text align right">
         <mat-icon class="mr-5 text-4xl mb-2">
           <span class="material-symbols-outlined">
             star
@@ -32,16 +34,5 @@
     </mat-button-toggle-group>
   </div>
 
-  <div class="my-14 w-full">
-    <!-- && allWords.length > 0 -->
-    <ng-container *ngIf="selectToogle === 'details'">
-      <component-details-word [listWords]="allWords" [idWord]="idWordDetail"></component-details-word>
-    </ng-container>
-    <ng-container *ngIf="selectToogle === 'all'">
-      <component-list-word (idWord)="changeDetail($event)"></component-list-word>
-    </ng-container>
-    <ng-container *ngIf="selectToogle === 'favorites'">
-      <component-favorites></component-favorites>
-    </ng-container>
-  </div>
+  <app-root></app-root>
 </div>

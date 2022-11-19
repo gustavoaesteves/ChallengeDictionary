@@ -1,10 +1,11 @@
+import { collection } from 'firebase/firestore/lite';
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Injectable } from '@angular/core';
 
 //Firebase
 import { getFirestore } from 'firebase/firestore/lite';
 import { initializeApp } from 'firebase/app';
-import { collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
+import { getDocs, doc, setDoc } from 'firebase/firestore/lite';
 
 // App
 import { environment } from 'environments/environment';
@@ -29,8 +30,8 @@ export class WordsService {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async getDatas(): Promise<any> {
-    return await getDocs(collection(this.db, "allWords"));
+  async getDatas(collect: string): Promise<any> {
+    return await getDocs(collection(this.db, collect));
     // querySnapshot.docs.forEach((doc) => {
     //   console.log(`${doc.id} => ${doc.get('word')}`);
     // });

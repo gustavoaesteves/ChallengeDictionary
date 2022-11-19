@@ -29,7 +29,6 @@ export class TableMeaningsComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.meanings && changes.meanings.currentValue) {
-      console.log(changes.meanings.currentValue);
       this.meanings = changes.meanings.currentValue;
     }
   }

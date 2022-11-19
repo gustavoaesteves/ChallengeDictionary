@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Component, OnInit } from '@angular/core';
 
-// App
-import { WordsService } from 'app/services/Firebase/Words/Words.service';
+// APP
 import { listWord } from 'app/services/DictionaryAPI/Types/wordResume';
+import { WordsService } from 'app/services/Firebase/Words/Words.service';
 
 @Component({
   selector: 'page-dictionary',
@@ -12,11 +12,8 @@ import { listWord } from 'app/services/DictionaryAPI/Types/wordResume';
 })
 export class DictionaryPageComponent implements OnInit {
 
+  // All words save in Firebase
   public allWords: listWord[] = [];
-
-  public selectToogle = 'details';
-
-  public idWordDetail: number = 0;
 
   public listWords = ["a", "a-", "a2 level", "a3", "a4", "a5", "aaa", "aaas", "aad", "aadhaar",
     "aam", "a — and a half", "aapa", "aardwolf", "aargh", "aaronic", "aaron's beard", "aaron's rod",
@@ -38,27 +35,24 @@ export class DictionaryPageComponent implements OnInit {
     "abomasum", "abominable", "abominable snowman", "abominably", "abominate", "abomination", "aboral", "aboriginal",
     "aboriginality", "aboriginalization"];
 
-  constructor(private _wordsService: WordsService,) {
-    this._wordsService.getDatas().then((test) => {
-      test.docs.forEach((doc) => {
-        this.allWords.push({ id: parseInt(doc.id), word: doc.get('word') });
-      });
+  constructor(
+    private _wordsService: WordsService
+  ) {
+    const words = JSON.parse(localStorage.getItem("words"));
+    if (!words) {
+      this._wordsService.getDatas('allWords').then((test) => {
+        test.docs.forEach((doc) => {
+          this.allWords.push({ id: parseInt(doc.id), word: doc.get('word') });
+        });
 
-    }).catch(err => { console.log(err); })
-      .finally(() => { this.allWords = this.allWords.slice(); });
+      }).catch(err => { console.log(err); })
+        .finally(() => {
+          localStorage.setItem('words', JSON.stringify(this.allWords));
+          console.log('Saved words localStorage');
+        });
+    }
   }
 
   ngOnInit(): void {
   }
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
-  public changeDetail(event: any): void {
-    this.selectToogle = 'details';
-    this.idWordDetail = event;
-  }
-
-  public setToogle($event): void {
-    this.selectToogle = $event.value;
-  }
-
 }
