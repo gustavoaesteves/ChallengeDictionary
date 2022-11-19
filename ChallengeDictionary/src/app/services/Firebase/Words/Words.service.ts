@@ -4,9 +4,9 @@ import { Injectable } from '@angular/core';
 //Firebase
 import { getFirestore } from 'firebase/firestore/lite';
 import { initializeApp } from 'firebase/app';
+import { collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
 
 // App
-import { collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
 import { environment } from 'environments/environment';
 
 const app = initializeApp(environment.firebase);
