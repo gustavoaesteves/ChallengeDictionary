@@ -63,7 +63,6 @@ export class DetailsWordComponent implements OnInit {
   private userSaved(): void {
     this._usersService.getUsers().then((test) => {
       test.docs.forEach((doc) => {
-        // doc.map(id => )
         if(doc.get('favorite').length > 0) doc.get('favorite').map(id => this.favorite.push(id));
         if(doc.get('historic').length > 0) doc.get('historic').map(id => this.historic.push(id));
       });
@@ -74,6 +73,14 @@ export class DetailsWordComponent implements OnInit {
         localStorage.setItem('historic', JSON.stringify(this.historic));
         console.log('Saved favorite and historic localStorage');
       });
+  }
+
+  private getFavorite(): void {
+    this.favorite = JSON.parse(localStorage.getItem("favorite"));
+  }
+
+  private getHistoric(): void {
+    this.historic = JSON.parse(localStorage.getItem("historic"));
   }
 
   private getWordAPI(word: string): void {
@@ -98,14 +105,6 @@ export class DetailsWordComponent implements OnInit {
 
       this.wordMeanings = this.wordMeanings.slice();
     });
-  }
-
-  private getFavorite(): void {
-    this.favorite = JSON.parse(localStorage.getItem("favorite"));
-  }
-
-  private getHistoric(): void {
-    this.historic = JSON.parse(localStorage.getItem("historic"));
   }
 
   public next(): void {

@@ -31,6 +31,7 @@ import { FormsRegisterComponent } from './component/Register/forms-register.comp
 import { DictionaryPageComponent } from './page/Dictionary/dictionary.component';
 import { LoginPageComponent } from './page/Login/login.component';
 import { RegisterPageComponent } from './page/Register/register.component';
+import { HistoricComponent } from './component/Dictionary/Historic/historic/historic.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +48,7 @@ import { RegisterPageComponent } from './page/Register/register.component';
     FavoritesComponent,
     TableMeaningsComponent,
     FormsRegisterComponent,
+    HistoricComponent,
   ],
   imports: [
     BrowserModule,
