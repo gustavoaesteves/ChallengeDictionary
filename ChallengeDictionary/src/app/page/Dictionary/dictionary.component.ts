@@ -39,7 +39,7 @@ export class DictionaryPageComponent implements OnInit {
     "aboriginality", "aboriginalization"];
 
   constructor(
-    private _wordsService: WordsService
+    private _wordsService: WordsService,
   ) {
     const words = JSON.parse(localStorage.getItem("words"));
     if (!words) {

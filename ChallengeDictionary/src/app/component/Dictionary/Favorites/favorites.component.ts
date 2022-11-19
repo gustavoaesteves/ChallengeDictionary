@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 // APP
 import { listWord } from 'app/services/Firebase/Words/Types/wordResume';
+import { NotificationService } from 'app/services/Toastr/Toastr.service';
 
 @Component({
   selector: 'component-favorites',
@@ -16,9 +17,10 @@ export class FavoritesComponent implements OnInit {
   private favorite: number[] = [];
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  constructor() {}
+  constructor(private not: NotificationService) {}
 
   ngOnInit(): void {
+    this.not.showSuccess('Sucesso',' Title');
     this.readWords();
   }
 
