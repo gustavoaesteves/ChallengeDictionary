@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
@@ -30,6 +30,7 @@ import { ListWordComponent } from './component/Dictionary/ListWord/list-word.com
 import { TableMeaningsComponent } from './component/Dictionary/TableMeanings/table-meanings.component';
 import { FormsLoginComponent } from './component/Login/formsLogin.component';
 import { FormsRegisterComponent } from './component/Register/forms-register.component';
+import { requestInterceptor } from './Interceptors/request.interceptor';
 import { DictionaryPageComponent } from './page/Dictionary/dictionary.component';
 import { LoginPageComponent } from './page/Login/login.component';
 import { RegisterPageComponent } from './page/Register/register.component';
@@ -75,7 +76,13 @@ import { RegisterPageComponent } from './page/Register/register.component';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: requestInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

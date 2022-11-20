@@ -22,9 +22,10 @@ export class AuthService {
   // Login
   public login(login: ModelLogin): void {
     this._fireAuth.signInWithEmailAndPassword(login.email, login.pass).then((token) => {
-      console.log(token);
+      token.user.getIdTokenResult().then( token => {
+        localStorage.setItem('token', token.token);
+      });
       this.not.showSuccess('Success', 'Login');
-      localStorage.setItem('token', '');
       localStorage.setItem('user', login.email);
       this._router.navigate(['/dictionary/list']);
     }, err => {
@@ -52,7 +53,7 @@ export class AuthService {
       localStorage.removeItem('token');
       this._router.navigate(['/login']);
     }, err => {
-      alert('Error: ' + err.message);
+      this.not.showError(err.message, 'Error Logout');
     }
     );
   }

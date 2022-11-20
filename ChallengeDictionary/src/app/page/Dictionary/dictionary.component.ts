@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'app/services/Firebase/Auth/auth.service';
 
 // APP
 import { listWord } from 'app/services/Firebase/Words/Types/wordResume';
@@ -40,6 +41,7 @@ export class DictionaryPageComponent implements OnInit {
 
   constructor(
     private _wordsService: WordsService,
+    private _auth: AuthService,
   ) {
     const words = JSON.parse(localStorage.getItem("words"));
     if (!words) {
@@ -51,12 +53,15 @@ export class DictionaryPageComponent implements OnInit {
       }).catch(err => { console.log(err); })
         .finally(() => {
           localStorage.setItem('words', JSON.stringify(this.allWords));
-          console.log('Saved words localStorage');
           this.savedLocal = true;
         });
     } else { this.savedLocal = true;}
   }
 
   ngOnInit(): void {
+  }
+
+  public logout(): void{
+    this._auth.logout();
   }
 }
